@@ -1,0 +1,54 @@
+<Context>
+        <!--<Resource name="jdbc/negardb"-->
+                  <!--auth="Container"-->
+                  <!--type="javax.sql.DataSource"-->
+                  <!--testWhileIdle="true"-->
+                  <!--testOnBorrow="true"-->
+                  <!--testOnReturn="false"-->
+                  <!--validationQuery="SELECT 1"-->
+                  <!--validationInterval="30000"-->
+                  <!--timeBetweenEvictionRunsMillis="30000"-->
+                  <!--username="negar_user"-->
+                  <!--password="babooshka71128"-->
+                  <!--driverClassName="com.mysql.jdbc.Driver"-->
+                  <!--url="jdbc:mysql://localhost:3306/negardb?useEncoding=true&amp;characterEncoding=UTF-8"-->
+                  <!--maxActive="140"-->
+                  <!--maxIdle="140"-->
+                  <!--minIdle="10"-->
+                  <!--initialSize="10"-->
+                  <!--removeAbandonedTimeout="60"-->
+                  <!--removeAbandoned="true"-->
+                  <!--logAbandoned="true"-->
+                  <!--minEvictableIdleTimeMillis="30000"-->
+                  <!--jmxEnabled="true"-->
+                  <!--jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;-->
+                                    <!--org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"-->
+                  <!--maxWait="40000"/>-->
+<!--</Context>-->
+
+        <Resource name="jdbc/negardb"
+                  auth="Container"
+                  type="javax.sql.DataSource"
+                  testWhileIdle="true"
+                  testOnBorrow="true"
+                  testOnReturn="false"
+                  validationQuery="SELECT 1"
+                  validationInterval="30000"
+                  timeBetweenEvictionRunsMillis="30000"
+                  username="admin"
+                  password="root"
+                  driverClassName="org.postgresql.Driver"
+                  url="jdbc:postgresql://localhost:5432/postgres"
+                  maxActive="140"
+                  maxIdle="140"
+                  minIdle="10"
+                  initialSize="10"
+                  removeAbandonedTimeout="60"
+                  removeAbandoned="true"
+                  logAbandoned="true"
+                  minEvictableIdleTimeMillis="30000"
+                  jmxEnabled="true"
+                  jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
+                                    org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
+                maxWait="40000"/>
+</Context>
