@@ -22,6 +22,8 @@ public class FileUpload {
     public static final String FILE_TYPE_1 = "123456789fileType_1_123456789";
     public static final String FILE_TYPE_2 = "123456789fileType_2_123456789";
     public static final double PX_TO_MM=25.4/72; //dpi=72 , each inch=25.4 mm
+    public static String getValue = "";
+    public static String getFieldName = "";
 
     @SuppressWarnings("rawtypes")
     //Map<httpParameter, value>
@@ -57,6 +59,7 @@ public class FileUpload {
                             fileType = "jpg";
                         formValues.put(FILE_TYPE_1, fileType);
                         String filePath = folderName + "/" + fileName + "." + formValues.get(FILE_TYPE_1);
+
                         File storeFile = new File(filePath);
                         // saves the file on disk
                         item.write(storeFile);

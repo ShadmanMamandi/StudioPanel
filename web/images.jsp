@@ -28,6 +28,7 @@
     List<Photo> photoList = null;
     String errorMessage = null;
     String photoContent = "";
+    String photoXXX = "";
     try {
         if (StudioDAO.checkPageAccess(sessionInfo, "images")) {
             // Define contract
@@ -52,15 +53,15 @@
                     String realPath = PhotoDAO.getBaseImageFolder(application) + subImageFolder;
                     Map<String, String> formValues = FileUpload.uploadFile1File(request, realPath, fileName);
 
-
                     if (formValues.get(FileUpload.FILE_TYPE_1) != null) {
                         fileName += "." + formValues.get(FileUpload.FILE_TYPE_1);
 
+                        photoXXX = formValues.get("xxx");
+
+
 
                         // Save Photo
-
-                        photoContent = request.getParameter("xxx");
-                        PhotoDAO.save(subImageFolder + fileName, photoContent, wedding.getId());
+                        PhotoDAO.save(subImageFolder + fileName, photoXXX, wedding.getId());
                         WeddingDAO.increaseAssetVersion(wedding);
 
                     } else
@@ -85,6 +86,7 @@
 
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <div class="article">
     <div class="h2Title">بارگذاری گالری تصاویر مراسم
         <%=wedding.getTitle()%>
@@ -119,7 +121,7 @@
             <td><a href="index.jsp?to=images&did=<%=photo.getPhoto_id()%>&wid=<%=wedding.getId()%>"
                    onclick="return confirm('آیا از حذف این عکس مطمئن هستید؟')">حذف</a></td>
             <td><img src="<%=PhotoDAO.getWebImageFolder()+photo.getPhoto_url()%>" width="150" height="150"/></td>
-
+            <td><%=photoXXX%></td>
         </tr>
         <%
             }
@@ -127,13 +129,7 @@
     </table>
     <p>بارگذاری عکس جدید</p>
 
-    <script>
-        submitForm = function () {
-            document.getElementById("form1").submit();
-            document.getElementById("form2").submit();
-        }
-    </script>
-    <form id="form1" enctype="multipart/form-data" method=post class="box">
+    <form enctype="multipart/form-data" method=post class="box">
         <input type="hidden" name="to" value="images">
         <input type="hidden" id="actionId" name="action" value="submitted">
         <input type="hidden" name="wid" value="<%=wedding.getId()%>">
@@ -143,18 +139,19 @@
                 <input type="file" name="f1" id="f1" value="f1" class="text" dir="ltr"
                        accept="image/jpeg,image/png,image/gif"/>
             </li>
+
             <li>
-            <label for="xxx">توضیحات</label>
-            <input type="text" id="xxx" name="xxx" value=" <%= photoContent %>" />
+                <label for="xxx">توضیحات</label>
+                <input type="text" id="xxx" name="xxx" class="text"/>
             </li>
+
             <li>
-            <input type="submit" onclick="submitForm()" name="imageField" id="imageField" value=" ذخیره " class="flatButton"/>&nbsp;&nbsp;&nbsp;
-            <div class="clr"></div>
-        </li>
-
-
+                <input type="submit" onclick="submitForm()" name="imageField" id="imageField" value=" ذخیره "
+                       class="flatButton"/>&nbsp;&nbsp;&nbsp;
+                <div class="clr"></div>
+            </li>
         </ol>
-    <
+    </form>
 
     <p>&nbsp;</p>
     <%=Util.getAuthorizedLink("weddings", "", "فهرست مراسم های تعریف شده", sessionInfo, true)%>

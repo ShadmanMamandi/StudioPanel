@@ -39,14 +39,6 @@ public class PhotoDAO {
         Photo photo = new Photo();
         photo.setPhoto_url(photoUrl);
         photo.setContent(content);
-        System.out.println("-----------------------------------------------------------");
-        System.out.println("-----------------------------------------------------------");
-        System.out.println("-----------------------------------------------------------");
-
-        System.out.println(content);
-        System.out.println("-----------------------------------------------------------");
-        System.out.println("-----------------------------------------------------------");
-        System.out.println("-----------------------------------------------------------");
         photo.setWedding(WeddingDAO.findById(fkWeddingId));
         return (Photo) new HibernateUtil().save(photo);
     }
